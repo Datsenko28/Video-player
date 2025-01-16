@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import "./video-player.scss";
+import useVideoStore from "../../store";
 
-function VideoPlayer(props) {
-  const { objVideo } = props;
+function VideoPlayer() {
+  const { selectedVideo } = useVideoStore();
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const [qualityMenuVisible, setQualityMenuVisible] = useState(false);
@@ -29,20 +30,20 @@ function VideoPlayer(props) {
     ],
   });
 
-  // Оновлюємо опції плеєра, коли objVideo змінюється
+  // Оновлюємо опції плеєра, коли selectedVideo змінюється
   useEffect(() => {
-    if (objVideo?.src && objVideo.src[0]?.videoUrl) {
+    if (selectedVideo?.src && selectedVideo.src[0]?.videoUrl) {
       setOptions((prevOptions) => ({
         ...prevOptions,
         sources: [
           {
-            src: objVideo?.src[0]?.videoUrl,
+            src: selectedVideo?.src[0]?.videoUrl,
             type: "video/mp4",
           },
         ],
       }));
     }
-  }, [objVideo]);
+  }, [selectedVideo]);
 
   useEffect(() => {
     if (!playerRef.current) {
@@ -88,7 +89,7 @@ function VideoPlayer(props) {
         const qualityMenu = document.createElement("div");
         qualityMenu.className = "quality-buttons";
 
-        const videoSrc = objVideo?.src || [];
+        const videoSrc = selectedVideo?.src || [];
         qualityMenu.innerHTML = videoSrc.map((src) => `<button data-src="${src.videoUrl}">${src.quality}</button>`).join("");
 
         qualityMenu.addEventListener("click", (event) => {
