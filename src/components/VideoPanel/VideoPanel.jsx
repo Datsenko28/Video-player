@@ -32,7 +32,7 @@ const VideoPanel = (props) => {
 
               <div className="ts">
                 <span>{videoSources.length}</span>
-                <span>/12 min</span>
+                <span>/22 min</span>
               </div>
             </div>
 
