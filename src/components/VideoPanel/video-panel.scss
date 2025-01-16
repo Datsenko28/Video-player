@@ -1,0 +1,143 @@
+$completed-color: #d4edda;
+$pending-color: #f8d7da;
+
+.video-panel {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 400px;
+  height: fit-content;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .video-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      color: rgb(156, 163, 175);
+    }
+    span {
+      color: rgb(156, 163, 175);
+    }
+
+    .video-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: conic-gradient(#e11d48 25%, #e9ecef 0);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      color: #e11d48;
+      font-weight: bold;
+
+      &::before {
+        content: attr(data-procent);
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .toggle-button {
+      width: 15px;
+      height: 15px;
+      background: url("../../assets/img/arrow.svg") no-repeat;
+      background-size: contain;
+      background-position: center;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+
+      &.expanded {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .video-list {
+    list-style: none;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .video-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   
+
+      cursor: pointer;
+
+      &:hover {
+        background: rgb(246, 242, 244);
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .video-info {
+        display: flex;
+        align-items: center;
+        grid-area: 8px;
+
+        .video-thumbnail {
+          width: 100px;
+          height: 55px;
+          margin-right: 15px;
+          border-radius: 5px;
+          object-fit: cover;
+        }
+
+        .ts {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          span {
+            font-weight: bold;
+            font-size: 14px;
+            color: rgb(55, 65, 81);
+
+            &:nth-child(2) {
+              color: rgb(156, 163, 175);
+            }
+          }
+        }
+      }
+
+      input[type="checkbox"] {
+        margin-right: 8px;
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+
+      .time {
+        color: #6c757d;
+        font-size: 14px;
+      }
+    }
+  }
+}
