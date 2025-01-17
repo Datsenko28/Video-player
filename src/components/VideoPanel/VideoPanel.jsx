@@ -28,7 +28,7 @@ const VideoPanel = (props) => {
           <div className="video-header">
             <div className="video-circle" data-procent={"25%"}></div>
             <div>
-              <h2>Aprenda a programar</h2>
+              <h2>Videos</h2>
 
               <div className="ts">
                 <span>{videoSources.length}</span>
