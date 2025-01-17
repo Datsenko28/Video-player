@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./video-panel.scss";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import useVideoStore from "../../store";
 
-const VideoPanel = (props) => {
-  const { videoSources } = props;
+const VideoPanel = () => {
+  const { videoSources } = useVideoStore();
   const [isExpanded, setIsExpanded] = useState(true);
   const [objVideo, setObjVideo] = useState(null);
 
